@@ -5,6 +5,7 @@ import java.text.NumberFormat;
 import java.util.Scanner;
 
 /**
+ * 数字转换为汉语中人民币的大写<br>
  * @author Red
  */
 public class Number2RMB {
@@ -66,7 +67,6 @@ public class Number2RMB {
      * @param dotPart
      * @return
      */
-
     private static String dotToBig(String dotPart) {
         // 得到转换后的大写（小数部分）
         String strRet = "";
