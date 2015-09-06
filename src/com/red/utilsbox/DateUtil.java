@@ -81,8 +81,8 @@ public class DateUtil {
     
     /**
      * 获取两日期之间的天数
-     * @param startdate
-     * @param enddate
+     * @param startdate yyyyMMdd
+     * @param enddate yyyyMMdd
      * @return
      */
     public static int getBetweenDates(String begindate,String enddate){
