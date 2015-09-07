@@ -1,6 +1,11 @@
 package com.red.utilsbox;
 
 import java.util.Arrays;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * 字符串处理工具类
@@ -77,6 +82,58 @@ public class StrUtil {
             if (!Character.isDigit(s.charAt(i))) { return false; }
         }
         return true;
+    }
+
+    /**
+     * 判断是否为空或者null(javabean和其他类型数据只判断是否为null)
+     * @param object 字符串|集合|HashMap|javabean
+     * @return true|false
+     */
+    public static boolean isEmpty(Object object) {
+        if (object instanceof String) {
+            String str = object.toString();
+            return null == str || str.isEmpty();
+        } else if (object instanceof Collection<?>) {
+            Collection<?> collection = (Collection<?>) object;
+            return null == collection || collection.isEmpty();
+        } else if (object instanceof Map<?, ?>) {
+            Map<?, ?> map = (Map<?, ?>) object;
+            return null == map || map.isEmpty();
+        } else if (object instanceof HashSet<?>) {
+            HashSet<?> set = (HashSet<?>) object;
+            return null == set || set.isEmpty();
+        } else {
+            return null == object;
+        }
+    }
+
+    /**
+     * url截取域名
+     * @param ur 需截取的URLl
+     * @return 域名
+     */
+    public static String getDomainFromUrl(String url) {
+        String domain = null;
+        Pattern pattern = Pattern.compile("[a-zA-Z0-9][-a-zA-Z0-9]{0,62}(\\.[a-zA-Z0-9][-a-zA-Z0-9]{0,62})+\\.?");
+        Matcher m = pattern.matcher(url);
+        if (m.find()) {
+            domain = m.group();
+        }
+        return domain;
+    }
+
+    /**
+     * 去除字符串以某个后缀结尾的的部分
+     * @param str
+     * @param suffix 后缀
+     * @return String
+     */
+    public static String trimcomma(String str, String suffix) {
+        if (-1 != str.indexOf(suffix)) {
+            return str.substring(0, str.indexOf(suffix));
+        } else {
+            return str;
+        }
     }
 
     public static void main(String[] args) {
