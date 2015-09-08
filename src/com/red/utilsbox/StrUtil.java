@@ -136,8 +136,30 @@ public class StrUtil {
         }
     }
 
+    /**
+     * 首字母转小写
+     * @param s
+     * @return
+     */
+    public static String firstToLowerCase(String s) {
+        if (Character.isLowerCase(s.charAt(0)))
+            return s;
+        else return (new StringBuilder()).append(Character.toLowerCase(s.charAt(0))).append(s.substring(1)).toString();
+    }
+
+    /**
+     * 首字母转大写
+     * @param s
+     * @return
+     */
+    public static String firstToUpperCase(String s) {
+        if (Character.isUpperCase(s.charAt(0)))
+            return s;
+        else return (new StringBuilder()).append(Character.toUpperCase(s.charAt(0))).append(s.substring(1)).toString();
+    }
+
     public static void main(String[] args) {
         // System.out.println(compressStr("xxxyyyyyyzz"));
-        System.out.println(deCompressStr("3x6y2z"));
+        System.out.println(firstToUpperCase("lisdg"));
     }
 }
